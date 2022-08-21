@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import Todo from "../../models/todo";
 
 interface Props {
     todo : Todo,
     editTodo : (id : number, value : string) => void,
+    setEditStatus : Dispatch<SetStateAction<boolean>>
 }
 
-const EditTodo : React.FC<Props> = ({ todo }) => {
-const EditTodo : React.FC<Props> = ({ todo, editTodo }) => {
+const EditTodo : React.FC<Props> = ({ todo, editTodo, setEditStatus }) => {
 
     const [input, setInput] = useState<string>(todo.title);
 

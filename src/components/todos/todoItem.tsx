@@ -8,7 +8,6 @@ interface Props{
     editTodo : (id : number, value : string) => void
 }
 
-const TodoItem : React.FC<Props> = ({ todo, deleteTodo }) => {
 const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo }) => {
 
     const [editStatus, setEditStatus] = useState<boolean>(false)
@@ -23,14 +22,13 @@ const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo }) => {
                             {todo.title}
                         </div>
                         <div>
-                            <button type="button" className="btn btn-info btn-sm">edit</button>
+                            <button type="button" className="btn btn-info btn-sm" onClick={() => setEditStatus(true)}>edit</button>
                             <button type="button" className="btn btn-danger btn-sm ml-1" onClick={() => deleteTodo(todo.id)}>delete</button>
                         </div>
                     </div>
                 </div>
             :
-                <EditTodo todo={todo} />
-                <EditTodo todo={todo} editTodo={editTodo} />
+                <EditTodo todo={todo} editTodo={editTodo} setEditStatus={setEditStatus} />
             
     )
 }
