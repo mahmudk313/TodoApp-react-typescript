@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
+import Todo from "../../models/todo";
 
-const AddTodo : React.FC = () => {
+interface Props {
+    add: Dispatch<SetStateAction<Todo[]>>
+}
+
+const AddTodo : React.FC<Props> = ({ add }) => {
 
     const [input , setinput] = useState<string>("");
 

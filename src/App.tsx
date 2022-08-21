@@ -24,7 +24,7 @@ function App() {
                 <h1 className="jumbotron-heading">Welcome!</h1>
                 <p className="lead text-muted">To get started, add some items to your list:</p>
 
-                <AddTodo />
+                <AddTodo add={setTodos} />
 
             </div>
           </section>
