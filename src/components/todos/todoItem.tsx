@@ -5,9 +5,11 @@ import EditTodo from './editTodo';
 interface Props{
     todo : Todo,
     deleteTodo : ( id: number) => void,
+    editTodo : (id : number, value : string) => void
 }
 
 const TodoItem : React.FC<Props> = ({ todo, deleteTodo }) => {
+const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo }) => {
 
     const [editStatus, setEditStatus] = useState<boolean>(false)
 
@@ -28,6 +30,7 @@ const TodoItem : React.FC<Props> = ({ todo, deleteTodo }) => {
                 </div>
             :
                 <EditTodo todo={todo} />
+                <EditTodo todo={todo} editTodo={editTodo} />
             
     )
 }

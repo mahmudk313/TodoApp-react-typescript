@@ -24,6 +24,21 @@ function App() {
     )
   }
 
+  const editTodo = (id : number, value : string) : void => {
+    setTodos(
+      todos.map((todo : Todo) => {
+        if(todo.id === id) {
+          return {
+            ...todo,
+            title : value
+          };
+        }
+
+        return todo;
+      })
+    )
+  }
+
   return (
     <div className="App">
         <header>
@@ -55,7 +70,7 @@ function App() {
                             </div>
                         </nav>
                         
-                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />)}
+                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} />)}
 
                     </div>
               

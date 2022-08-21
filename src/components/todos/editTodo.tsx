@@ -3,9 +3,11 @@ import Todo from "../../models/todo";
 
 interface Props {
     todo : Todo,
+    editTodo : (id : number, value : string) => void,
 }
 
 const EditTodo : React.FC<Props> = ({ todo }) => {
+const EditTodo : React.FC<Props> = ({ todo, editTodo }) => {
 
     const [input, setInput] = useState<string>(todo.title);
 
