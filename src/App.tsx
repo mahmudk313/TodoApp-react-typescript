@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddTodo from './components/todos/addTodo';
+import Todo from './models/todo';
 
 function App() {
+
+  const [todos, setTodos] = useState<Todo[]>([])
+
   return (
     <div className="App">
         <header>
@@ -21,7 +25,7 @@ function App() {
                 <p className="lead text-muted">To get started, add some items to your list:</p>
 
                 <AddTodo />
-                
+
             </div>
           </section>
           <div className="todosList">
