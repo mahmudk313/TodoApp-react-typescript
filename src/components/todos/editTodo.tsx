@@ -17,9 +17,11 @@ const EditTodo : React.FC<Props> = ({ todo, editTodo, setEditStatus }) => {
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
-        editTodo(todo.id, input);
-        setInput("");
-        setEditStatus(false);
+        if(input !== "") {
+            editTodo(todo.id, input);
+            setInput("");
+            setEditStatus(false);
+        }
     }
 
     return(
