@@ -94,8 +94,8 @@ function App() {
                     <div className="d-flex flex-column align-items-center ">
                         <nav className="col-6 mb-3">
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a className="nav-item nav-link active font-weight-bold" id="nav-home-tab">undone <span className="badge badge-secondary">9</span></a>
-                                <a className="nav-item nav-link font-weight-bold" id="nav-profile-tab">done <span className="badge badge-success">9</span></a>
+                                <a onClick={() => setFilter(FilterTypes.Undone)} className={`nav-item nav-link font-weight-bold ${filter === FilterTypes.Undone ? "active" : ""}`} id="nav-home-tab">undone <span className="badge badge-secondary">9</span></a>
+                                <a onClick={() => setFilter(FilterTypes.Done)} className={`nav-item nav-link font-weight-bold ${filter === FilterTypes.Done ? "active" : ""}`}  id="nav-profile-tab">done <span className="badge badge-success">9</span></a>
                             </div>
                         </nav>
                         
