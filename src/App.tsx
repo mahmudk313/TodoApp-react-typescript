@@ -18,6 +18,12 @@ function App() {
     ])
   }
 
+  const deleteTodo = (id : number) : void => {
+    setTodos(
+      todos.filter((todo : Todo) => todo.id !== id)
+    )
+  }
+
   return (
     <div className="App">
         <header>
@@ -49,7 +55,7 @@ function App() {
                             </div>
                         </nav>
                         
-                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo}/>)}
+                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />)}
 
                     </div>
               
