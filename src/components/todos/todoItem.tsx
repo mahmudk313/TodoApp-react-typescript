@@ -5,10 +5,11 @@ import EditTodo from './editTodo';
 interface Props{
     todo : Todo,
     deleteTodo : ( id: number) => void,
-    editTodo : (id : number, value : string) => void
+    editTodo : (id : number, value : string) => void,
+    toggleTodoDone : (id : number) => void,
 }
 
-const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo }) => {
+const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo, toggleTodoDone }) => {
 
     const [editStatus, setEditStatus] = useState<boolean>(false)
 
@@ -22,7 +23,8 @@ const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo }) => {
                     </div>
                     <div>
                         <button type="button" className="btn btn-info btn-sm" onClick={() => setEditStatus(true)}>edit</button>
-                        <button type="button" className="btn btn-danger btn-sm ml-1" onClick={() => deleteTodo(todo.id)}>delete</button>
+                        <button type="button" className="btn btn-danger btn-sm ms-1" onClick={() => deleteTodo(todo.id)}>delete</button>
+                        <button type="button" className={`btn ${todo.is_done ? "btn-warning" : "btn-success"} btn-sm ms-1`} onClick={() => toggleTodoDone(todo.id)}>Done</button>
                     </div>
                 </div>
             </div>

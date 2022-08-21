@@ -85,7 +85,7 @@ function App() {
                             </div>
                         </nav>
                         
-                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} />)}
+                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} toggleTodoDone={toggleTodoDone} />)}
 
                     </div>
               
