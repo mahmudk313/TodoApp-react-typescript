@@ -39,6 +39,21 @@ function App() {
     )
   }
 
+  const toggleTodoDone = (id : number) : void => {
+    setTodos(
+      todos.map((todo : Todo) => {
+        if(todo.id === id) {
+          return {
+            ...todo,
+            is_done : !todo.is_done
+          };
+        }
+
+        return todo;
+      })
+    )
+  }
+
   return (
     <div className="App">
         <header>
