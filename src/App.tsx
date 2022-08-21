@@ -7,9 +7,14 @@ import Todo from './models/todo';
 import AddTodo from './components/todos/addTodo';
 import TodoItem from './components/todos/todoItem';
 
+enum FilterTypes {
+  Done = 'done',
+  Undone = 'undone'
+}
+
 function App() {
 
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const addTodo = (todo : Todo) : void => {
     setTodos([
