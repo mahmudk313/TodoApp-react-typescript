@@ -7,6 +7,13 @@ function App() {
 
   const [todos, setTodos] = useState<Todo[]>([])
 
+  const addTodo = (todo : Todo) : void => {
+    setTodos([
+      ...todos,
+      todo
+    ])
+  }
+
   return (
     <div className="App">
         <header>
@@ -24,7 +31,7 @@ function App() {
                 <h1 className="jumbotron-heading">Welcome!</h1>
                 <p className="lead text-muted">To get started, add some items to your list:</p>
 
-                <AddTodo add={setTodos} />
+                <AddTodo add={addTodo} />
 
             </div>
           </section>
