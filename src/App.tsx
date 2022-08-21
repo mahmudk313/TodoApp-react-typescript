@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import AddTodo from './components/todos/addTodo';
 
 function App() {
   return (
@@ -18,12 +19,9 @@ function App() {
             <div className="container d-flex flex-column align-items-center">
                 <h1 className="jumbotron-heading">Welcome!</h1>
                 <p className="lead text-muted">To get started, add some items to your list:</p>
-                <div className="form-inline">
-                  <div className="form-group d-flex">
-                    <input type="text" className="form-control mx-sm-3" placeholder="i want to do ..."/>
-                    <button className="btn btn-primary">add</button>
-                  </div>
-                </div>
+
+                <AddTodo />
+                
             </div>
           </section>
           <div className="todosList">
