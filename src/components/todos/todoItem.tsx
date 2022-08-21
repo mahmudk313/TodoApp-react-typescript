@@ -24,7 +24,7 @@ const TodoItem : React.FC<Props> = ({ todo, deleteTodo, editTodo, toggleTodoDone
                     <div>
                         <button type="button" className="btn btn-info btn-sm" onClick={() => setEditStatus(true)}>edit</button>
                         <button type="button" className="btn btn-danger btn-sm ms-1" onClick={() => deleteTodo(todo.id)}>delete</button>
-                        <button type="button" className={`btn ${todo.is_done ? "btn-warning" : "btn-success"} btn-sm ms-1`} onClick={() => toggleTodoDone(todo.id)}>Done</button>
+                        <button type="button" className={`btn ${todo.is_done ? "btn-warning" : "btn-success"} btn-sm ms-1`} onClick={() => toggleTodoDone(todo.id)}>{`${todo.is_done ? "Undone" : "Done"}`}</button>
                     </div>
                 </div>
             </div>
