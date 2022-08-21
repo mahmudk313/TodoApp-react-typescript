@@ -15,8 +15,15 @@ const EditTodo : React.FC<Props> = ({ todo, editTodo, setEditStatus }) => {
         setInput(e.target.value)
     }
 
+    const submitHandler = (e: React.FormEvent) => {
+        e.preventDefault();
+        editTodo(todo.id, input);
+        setInput("");
+        setEditStatus(false);
+    }
+
     return(
-        <form className="col-6 mb-2">
+        <form onSubmit={submitHandler} className="col-6 mb-2">
             <div className="d-flex justify-content-between align-items-center border rounded p-3">
                 <div>
                     <input type="text" onChange={inputHandler} value={input} />
