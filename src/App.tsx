@@ -15,6 +15,7 @@ enum FilterTypes {
 function App() {
 
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<FilterTypes>(FilterTypes.Undone);
 
   const addTodo = (todo : Todo) : void => {
     setTodos([
@@ -59,6 +60,14 @@ function App() {
     )
   }
 
+  const filteredTodos = todos.filter((todo : Todo) => {
+    if(filter === FilterTypes.Done) {
+      return todo.is_done
+    } else {
+      return !todo.is_done
+    }
+  })
+
   return (
     <div className="App">
         <header>
@@ -90,7 +99,7 @@ function App() {
                             </div>
                         </nav>
                         
-                        {todos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} toggleTodoDone={toggleTodoDone} />)}
+                        {filteredTodos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} toggleTodoDone={toggleTodoDone} />)}
 
                     </div>
               
