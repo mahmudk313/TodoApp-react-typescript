@@ -7,6 +7,10 @@ import Todo from './models/todo';
 import AddTodo from './components/todos/addTodo';
 import TodoItem from './components/todos/todoItem';
 
+//Redux
+import { useSelector } from 'react-redux';
+import { RootState } from './store';
+
 enum FilterTypes {
   Done = 'done',
   Undone = 'undone'
@@ -14,51 +18,44 @@ enum FilterTypes {
 
 function App() {
 
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const todos = useSelector((state : RootState) => state.todo)
   const [filter, setFilter] = useState<FilterTypes>(FilterTypes.Undone);
 
-  const addTodo = (todo : Todo) : void => {
-    setTodos([
-      ...todos,
-      todo
-    ])
-  }
+  // const deleteTodo = (id : number) : void => {
+  //   setTodos(
+  //     todos.filter((todo : Todo) => todo.id !== id)
+  //   )
+  // }
 
-  const deleteTodo = (id : number) : void => {
-    setTodos(
-      todos.filter((todo : Todo) => todo.id !== id)
-    )
-  }
+  // const editTodo = (id : number, value : string) : void => {
+  //   setTodos(
+  //     todos.map((todo : Todo) => {
+  //       if(todo.id === id) {
+  //         return {
+  //           ...todo,
+  //           title : value
+  //         };
+  //       }
 
-  const editTodo = (id : number, value : string) : void => {
-    setTodos(
-      todos.map((todo : Todo) => {
-        if(todo.id === id) {
-          return {
-            ...todo,
-            title : value
-          };
-        }
+  //       return todo;
+  //     })
+  //   )
+  // }
 
-        return todo;
-      })
-    )
-  }
+  // const toggleTodoDone = (id : number) : void => {
+  //   setTodos(
+  //     todos.map((todo : Todo) => {
+  //       if(todo.id === id) {
+  //         return {
+  //           ...todo,
+  //           is_done : !todo.is_done
+  //         };
+  //       }
 
-  const toggleTodoDone = (id : number) : void => {
-    setTodos(
-      todos.map((todo : Todo) => {
-        if(todo.id === id) {
-          return {
-            ...todo,
-            is_done : !todo.is_done
-          };
-        }
-
-        return todo;
-      })
-    )
-  }
+  //       return todo;
+  //     })
+  //   )
+  // }
 
   const filteredTodos = todos.filter((todo : Todo) => {
     if(filter === FilterTypes.Done) {
@@ -85,7 +82,7 @@ function App() {
                 <h1 className="jumbotron-heading">Welcome!</h1>
                 <p className="lead text-muted">To get started, add some items to your list:</p>
 
-                <AddTodo add={addTodo} />
+                <AddTodo />
 
             </div>
           </section>
@@ -99,7 +96,7 @@ function App() {
                             </div>
                         </nav>
                         
-                        {filteredTodos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} toggleTodoDone={toggleTodoDone} />)}
+                        {filteredTodos.map((todo : Todo) => <TodoItem key={todo.id} todo={todo} />)}
 
                     </div>
               

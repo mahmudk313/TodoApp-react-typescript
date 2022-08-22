@@ -3,11 +3,10 @@ import Todo from "../../models/todo";
 
 interface Props {
     todo : Todo,
-    editTodo : (id : number, value : string) => void,
     setEditStatus : Dispatch<SetStateAction<boolean>>
 }
 
-const EditTodo : React.FC<Props> = ({ todo, editTodo, setEditStatus }) => {
+const EditTodo : React.FC<Props> = ({ todo, setEditStatus }) => {
 
     const [input, setInput] = useState<string>(todo.title);
 
@@ -18,7 +17,7 @@ const EditTodo : React.FC<Props> = ({ todo, editTodo, setEditStatus }) => {
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
         if(input !== "") {
-            editTodo(todo.id, input);
+            // editTodo(todo.id, input);
             setInput("");
             setEditStatus(false);
         }

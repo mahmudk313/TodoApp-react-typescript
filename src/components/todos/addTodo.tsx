@@ -1,22 +1,13 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import Todo from "../../models/todo";
 
-interface Props {
-    add: (todo : Todo) => void
-}
-
-const AddTodo : React.FC<Props> = ({ add }) => {
+const AddTodo : React.FC = () => {
 
     const [input , setInput] = useState<string>("");
 
     const submitHandler = (e : React.FormEvent) => {
         e.preventDefault();
         if(input !== "") {
-            add({
-                id: Date.now(),
-                title: input,
-                is_done: false
-            })
 
             setInput("")
         }
