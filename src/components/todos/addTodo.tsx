@@ -1,13 +1,26 @@
-import React, { useState, Dispatch, SetStateAction } from "react";
+import React, { useState, SetStateAction } from "react";
+import { useDispatch } from "react-redux";
 import Todo from "../../models/todo";
+import { AppDispatch } from "../../store";
+import { addTodo } from "../../store/todoSlice";
 
 const AddTodo : React.FC = () => {
 
     const [input , setInput] = useState<string>("");
 
+    const dispatch = useDispatch<AppDispatch>()
+
     const submitHandler = (e : React.FormEvent) => {
         e.preventDefault();
         if(input !== "") {
+
+            dispatch(
+                addTodo({
+                    id: Date.now(),
+                    title: input,
+                    is_done: false
+                })
+            )
 
             setInput("")
         }
