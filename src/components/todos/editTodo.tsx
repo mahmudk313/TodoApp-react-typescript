@@ -1,6 +1,10 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import Todo from "../../models/todo";
 
+import { useDispatch } from 'react-redux';
+import { editTodo } from "../../store/todoSlice";
+import { AppDispatch } from "../../store";
+
 interface Props {
     todo : Todo,
     setEditStatus : Dispatch<SetStateAction<boolean>>
@@ -8,6 +12,7 @@ interface Props {
 
 const EditTodo : React.FC<Props> = ({ todo, setEditStatus }) => {
 
+    const dispatch = useDispatch<AppDispatch>()
     const [input, setInput] = useState<string>(todo.title);
 
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +22,14 @@ const EditTodo : React.FC<Props> = ({ todo, setEditStatus }) => {
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault();
         if(input !== "") {
-            // editTodo(todo.id, input);
+            dispatch(
+                editTodo(
+                    {
+                        id: todo.id,
+                        text: input
+                    }
+                )
+            )
             setInput("");
             setEditStatus(false);
         }
