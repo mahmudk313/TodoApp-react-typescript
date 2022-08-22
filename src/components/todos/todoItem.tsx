@@ -4,7 +4,7 @@ import EditTodo from './editTodo';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { deleteTodo } from '../../store/todoSlice';
+import { deleteTodo, toggleTodo } from '../../store/todoSlice';
 
 interface Props{
     todo : Todo,
@@ -18,6 +18,9 @@ const TodoItem : React.FC<Props> = ({ todo }) => {
     const deleteHandler = () => {
         dispatch(deleteTodo(todo.id))
     }
+    const toggleHandler = () => {
+        dispatch(toggleTodo(todo.id))
+    }
 
     return(
 
@@ -30,7 +33,7 @@ const TodoItem : React.FC<Props> = ({ todo }) => {
                     <div>
                         <button type="button" className="btn btn-info btn-sm" onClick={() => setEditStatus(true)}>edit</button>
                         <button type="button" className="btn btn-danger btn-sm ms-1" onClick={deleteHandler}>delete</button>
-                        <button type="button" className={`btn ${todo.is_done ? "btn-warning" : "btn-success"} btn-sm ms-1`} /*onClick={() => toggleTodoDone(todo.id)}*/>{`${todo.is_done ? "Undone" : "Done"}`}</button>
+                        <button type="button" className={`btn ${todo.is_done ? "btn-warning" : "btn-success"} btn-sm ms-1`} onClick={toggleHandler}>{`${todo.is_done ? "Undone" : "Done"}`}</button>
                     </div>
                 </div>
             </div>
